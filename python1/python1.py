@@ -46,24 +46,51 @@ o Mật khẩu phải có:
 ▪ Có chứa ít nhất 1 ký tự đặc biệt (!, @, #, $, %, &)
 ▪ Có chứa ít nhất 1 ký tự số (từ 1 đến 9).'''
 
-import re
-pw = input ("Nhập mật khẩu: ")
-errors = []
-if len(pw) < 8: 
-    errors.append("- Mật khẩu phải có ít nhất 8 ký tự")
+# import re
+# pw = input ("Nhập mật khẩu: ")
+# errors = []
+# if len(pw) < 8: 
+#     errors.append("- Mật khẩu phải có ít nhất 8 ký tự")
 
-if not re.search(r"[A-Z]",pw):
-    errors.append("- Mật khẩu phải có chứa ít nhất 1 ký tự chữ hoa (upper)")
+# if not re.search(r"[A-Z]",pw):
+#     errors.append("- Mật khẩu phải có chứa ít nhất 1 ký tự chữ hoa (upper)")
 
-if not re.search(r"[!@#$%&]", pw):
-    errors.append("- Mật khẩu phải có chứa ít nhất 1 ký tự đặc biệt (!, @, #, $, %, &)")
-    # Mật khẩu phải có chứa ít nhất 1 ký tự số (từ 1 đến 9)"
+# if not re.search(r"[!@#$%&]", pw):
+#     errors.append("- Mật khẩu phải có chứa ít nhất 1 ký tự đặc biệt (!, @, #, $, %, &)")
+#     # Mật khẩu phải có chứa ít nhất 1 ký tự số (từ 1 đến 9)"
 
-if not re.search(r"[1-9]", pw): 
-    errors.append("- Mật khẩu phải có chứa ít nhất 1 ký tự số (từ 1 đến 9)")
-if errors:
-    print("Mật khẩu chưa đạt yêu cầu.")
-    print("\n".join(errors))
-else:
-    print("Mật khẩu đạt yêu cầu")
+# if not re.search(r"[1-9]", pw): 
+#     errors.append("- Mật khẩu phải có chứa ít nhất 1 ký tự số (từ 1 đến 9)")
+# if errors:
+#     print("Mật khẩu chưa đạt yêu cầu.")
+#     print("\n".join(errors))
+# else:
+#     print("Mật khẩu đạt yêu cầu")
+
+
+#4
+'''Cho danh sách nhân viên. Hãy thực hiện các yêu cầu sau
+
+c.Tạo cột dữ liệu mới là Increase_Salary. Dữ liệu là Yes nếu nhân viên có tăng
+ca, ngược lại thì Increase_Salary là No
+
+d. Xuất kết quả sau khi tính toán ra tập tin nhan_su_2.csv
+'''
+
+'''a. Cập nhật tiền lương cho các nhân viên bị thiếu (cột tiền lương đang có dấu ?).
+Biết rằng các nhân viên cùng phòng sẽ có mức lương bằng nhau.'''
+
+# import pandas as pd
+# df = pd.read_csv('nhan_su.csv', na_values=['?'])
+# salary_by_dept = df.groupby("Dept")['Salary'].transform('mean')
+
+# df["Salary"].fillna(salary_by_dept, inplace=True)
+# df.to_csv('nhan_su.csv', index=False)
+# print(df)
+
+# b
+
+'''b. Tính thêm 10% tiền lương cho nhân viên có tăng ca (cột Overtime bằng 1). Cập
+nhật lại giá trị tiền lương trong cột Salary cho nhân viên.'''
+
 
