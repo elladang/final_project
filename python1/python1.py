@@ -80,8 +80,8 @@ d. Xuất kết quả sau khi tính toán ra tập tin nhan_su_2.csv
 '''a. Cập nhật tiền lương cho các nhân viên bị thiếu (cột tiền lương đang có dấu ?).
 Biết rằng các nhân viên cùng phòng sẽ có mức lương bằng nhau.'''
 
-# import pandas as pd
-# df = pd.read_csv('nhan_su.csv', na_values=['?'])
+import pandas as pd
+df = pd.read_csv('nhan_su.csv', na_values=['?'])
 # salary_by_dept = df.groupby("Dept")['Salary'].transform('mean')
 
 # df["Salary"].fillna(salary_by_dept, inplace=True)
@@ -93,4 +93,14 @@ Biết rằng các nhân viên cùng phòng sẽ có mức lương bằng nhau.'
 '''b. Tính thêm 10% tiền lương cho nhân viên có tăng ca (cột Overtime bằng 1). Cập
 nhật lại giá trị tiền lương trong cột Salary cho nhân viên.'''
 
+overtime_employee = df[df["Overtime"] == 1]
+# overtime_employee["Salary"] = overtime_employee["Salary"]*1.1
+# df.update(overtime_employee)
+# df.to_csv('nhan_su.csv', index=False)
+# print(df)
 
+
+increased_salary = df["Overtime"].apply(lambda x: "Yes" if x == 1  else "No")
+df["Increased_Salary"] = increased_salary
+df.to_csv('nhan_su.csv', index=False)
+print(df)
