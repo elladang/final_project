@@ -70,18 +70,13 @@ o Mật khẩu phải có:
 
 #4
 '''Cho danh sách nhân viên. Hãy thực hiện các yêu cầu sau
-
-c.Tạo cột dữ liệu mới là Increase_Salary. Dữ liệu là Yes nếu nhân viên có tăng
-ca, ngược lại thì Increase_Salary là No
-
-d. Xuất kết quả sau khi tính toán ra tập tin nhan_su_2.csv
 '''
 
 '''a. Cập nhật tiền lương cho các nhân viên bị thiếu (cột tiền lương đang có dấu ?).
 Biết rằng các nhân viên cùng phòng sẽ có mức lương bằng nhau.'''
 
-import pandas as pd
-df = pd.read_csv('nhan_su.csv', na_values=['?'])
+# import pandas as pd
+# df = pd.read_csv('nhan_su.csv', na_values=['?'])
 # salary_by_dept = df.groupby("Dept")['Salary'].transform('mean')
 
 # df["Salary"].fillna(salary_by_dept, inplace=True)
@@ -93,14 +88,66 @@ df = pd.read_csv('nhan_su.csv', na_values=['?'])
 '''b. Tính thêm 10% tiền lương cho nhân viên có tăng ca (cột Overtime bằng 1). Cập
 nhật lại giá trị tiền lương trong cột Salary cho nhân viên.'''
 
-overtime_employee = df[df["Overtime"] == 1]
-# overtime_employee["Salary"] = overtime_employee["Salary"]*1.1
-# df.update(overtime_employee)
+# overtime_employee = df[df["Overtime"] == 1]
+# # overtime_employee["Salary"] = overtime_employee["Salary"]*1.1
+# # df.update(overtime_employee)
+# # df.to_csv('nhan_su.csv', index=False)
+# # print(df)
+
+'''
+c.Tạo cột dữ liệu mới là Increase_Salary. Dữ liệu là Yes nếu nhân viên có tăng
+ca, ngược lại thì Increase_Salary là No'''
+# increased_salary = df["Overtime"].apply(lambda x: "Yes" if x == 1  else "No")
+# df["Increased_Salary"] = increased_salary
 # df.to_csv('nhan_su.csv', index=False)
 # print(df)
 
+# 5
+'''
+Yêu cầu: Viết chương trình cho phép người dùng nhập vào số tiền gửi và số tiền
+rút, ghi nhận lại thao tác giao dịch của khách hàng. Kết quả giao dịch sẽ được
+xuất ra màn hình khi người dùng không thực hiện giao dịch nữa.
+• Xử lý:
+    o Ban đầu tiền trong tài khoản sẽ khởi tạo bằng 0 (vì vậy cần phải chọn
+    chức năng Gửi tiền để có tiền trong tài khoản).
+    o Kiểm tra dữ liệu nhập tiền gửi và tiền rút nhập vào phải lớn hơn 0.
+    o Khi người dùng nhập số tiền rút: Kiểm tra nếu số tiền rút lớn hơn số tiền
+    có trong tài khoản hoặc số tiền đang có trong tài khoản bằng 0 thì thông
+    báo “Số tiền trong tài khoản không đủ”
+    .
+    o Sau mỗi lần giao dịch, hỏi người dùng có muốn thực hiện giao dịch nào
+    khác không?
+'''
+# import datetime
+# balance = 0
+# transactions = []
+# transaction_id = 1 
 
-increased_salary = df["Overtime"].apply(lambda x: "Yes" if x == 1  else "No")
-df["Increased_Salary"] = increased_salary
-df.to_csv('nhan_su.csv', index=False)
-print(df)
+# while True: 
+#     loai = input("Bạn muốn làm gì? \n 1. Gửi tiền \n 2. Rút tiền: ")
+#     if loai == "1": 
+#         tien_gui = 200
+#         balance+= tien_gui
+#         transactions.append((transaction_id, "GD"+ str(transaction_id), datetime.datetime.now(),tien_gui ))
+#         transaction_id +=1
+#         print("Giao dịch thành công")
+#     elif loai == "2": 
+#         tien_rut = 10
+#         if tien_rut <= balance: 
+#             balance -= tien_rut
+#             transactions.append((transaction_id, "GD"+ str(transaction_id), datetime.datetime.now(),-tien_rut ))
+#             transaction_id +=1
+#             print("Giao dịch thành công")
+#         else: 
+#             print("Số tiền trong tài khoản không đủ")
+#     else: 
+#             print("Không có trong giao dịch, vui lòng chọn lại")
+#     tiep_tuc = input("Bạn có muốn thực hiện giao dịch nào khác nữa không (y/n)")
+#     if  tiep_tuc == "n": 
+#         break
+
+# print(f"\nLỊCH SỬ GIAO DỊCH({len(transactions)})")
+# print("-"*60)
+# print("STT".ljust(10),  "MÃ GD".ljust(10), "NGÀY - GIỜ".ljust(30),  "SỐ TIỀN".ljust(10))
+# for i in transactions: 
+#     print(str(i[0]).ljust(10), i[1].ljust(10), str(i[2]).ljust(30), str(i[3]).ljust(10))
